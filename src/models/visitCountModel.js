@@ -1,4 +1,4 @@
-import pool from '../config/db.js';
+import pool from '../db/db.js';
 
 // Crear tabla si no existe
 (async () => {
