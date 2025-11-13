@@ -15,7 +15,7 @@ export const sendMessage = async (req, res) => {
       id: result.insertId,
     });
   } catch (error) {
-    console.error('❌ Error al enviar mensaje de contacto:', error);
+    console.error(' Error al enviar mensaje de contacto:', error);
     res.status(500).json({ message: 'Error interno del servidor' });
   }
 };
@@ -25,7 +25,7 @@ export const listMessages = async (req, res) => {
     const messages = await getAllMessages();
     res.status(200).json(messages);
   } catch (error) {
-    console.error('❌ Error al obtener mensajes:', error);
+    console.error(' Error al obtener mensajes:', error);
     res.status(500).json({ message: 'Error interno del servidor' });
   }
 };
