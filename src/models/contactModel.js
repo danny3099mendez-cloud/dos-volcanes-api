@@ -13,9 +13,9 @@ import pool from '../db/db.js';
       )
     `;
     await pool.query(sql);
-    console.log('🟢 Tabla "contact_messages" verificada/creada');
+    console.log(' Tabla "contact_messages" verificada/creada');
   } catch (error) {
-    console.error('❌ Error al crear tabla contact_messages:', error);
+    console.error(' Error al crear tabla contact_messages:', error);
   }
 })();
 

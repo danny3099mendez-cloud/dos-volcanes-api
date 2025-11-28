@@ -15,12 +15,12 @@ import pool from '../db/db.js';
     const [rows] = await pool.query('SELECT * FROM visit_count WHERE id = 1');
     if (rows.length === 0) {
       await pool.query('INSERT INTO visit_count (id, count) VALUES (1, 0)');
-      console.log('🟢 Tabla "visit_count" inicializada');
+      console.log(' Tabla "visit_count" inicializada');
     } else {
-      console.log('🟢 Tabla "visit_count" verificada');
+      console.log(' Tabla "visit_count" verificada');
     }
   } catch (error) {
-    console.error('❌ Error al crear tabla visit_count:', error);
+    console.error(' Error al crear tabla visit_count:', error);
   }
 })();
 
