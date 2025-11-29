@@ -21,7 +21,7 @@ app.use('/api/contact', contactRoutes);
 
 // Ruta base
 app.get('/', (req, res) => {
-  res.json({ message: 'API funcionando correctamente 🚀' });
+  res.json({ message: 'API funcionando correctamente ' });
 });
 
 export default app;
