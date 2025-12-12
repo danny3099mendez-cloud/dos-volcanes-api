@@ -3,6 +3,7 @@ import { subscribeNewsletter } from '../controllers/newsletterController.js';
 
 const router = Router();
 
-router.post('/newsletter', subscribeNewsletter);
+// antes: router.post('/newsletter', subscribeNewsletter);
+router.post('/', subscribeNewsletter);
 
 export default router;
