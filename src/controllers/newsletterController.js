@@ -1,25 +1,46 @@
-import { addNewsletterEmail } from '../models/newsletterModel.js';
+import {
+  addNewsletterEmail,
+  getAllNewsletterEmails,
+} from '../models/newsletterModel.js';
 
+// POST /api/newsletter
 export const subscribeNewsletter = async (req, res) => {
   try {
     const { email } = req.body;
 
+    // Validación básica
     if (!email) {
-      return res.status(400).json({ message: 'El correo es obligatorio' });
+      return res.status(400).json({
+        message: 'El correo electrónico es obligatorio',
+      });
     }
 
-    await addNewsletterEmail(email);
+    // Guardar en BD
+    const result = await addNewsletterEmail(email);
 
-    res.status(201).json({ message: 'Suscripción exitosa!' });
-
+    res.status(201).json({
+      message: 'Correo suscrito correctamente',
+      id: result.insertId,
+    });
   } catch (error) {
-    console.error(error);
+    console.error(' Error al suscribir correo:', error);
 
-    // Si el correo ya existe
-    if (error.code === 'ER_DUP_ENTRY') {
-      return res.status(409).json({ message: 'Este correo ya está suscrito' });
-    }
+    res.status(500).json({
+      message: 'Error interno del servidor',
+    });
+  }
+};
 
-    res.status(500).json({ message: 'Error al suscribirse' });
+// GET /api/newsletter (opcional)
+export const listNewsletterEmails = async (req, res) => {
+  try {
+    const emails = await getAllNewsletterEmails();
+    res.status(200).json(emails);
+  } catch (error) {
+    console.error(' Error al obtener correos:', error);
+
+    res.status(500).json({
+      message: 'Error interno del servidor',
+    });
   }
 };

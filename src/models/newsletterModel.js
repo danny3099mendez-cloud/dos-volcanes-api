@@ -1,5 +1,6 @@
-import pool from '../db/db.js'; // conexión
+import pool from '../db/db.js';
 
+// Guardar email en newsletter
 export const addNewsletterEmail = async (email) => {
   const [result] = await pool.query(
     'INSERT INTO newsletter (email) VALUES (?)',
@@ -8,7 +9,10 @@ export const addNewsletterEmail = async (email) => {
   return result;
 };
 
+// Obtener todos los correos (opcional / admin)
 export const getAllNewsletterEmails = async () => {
-  const [rows] = await pool.query('SELECT * FROM newsletter ORDER BY created_at DESC');
+  const [rows] = await pool.query(
+    'SELECT * FROM newsletter ORDER BY created_at DESC'
+  );
   return rows;
 };

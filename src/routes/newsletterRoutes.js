@@ -1,9 +1,15 @@
-import { Router } from 'express';
-import { subscribeNewsletter } from '../controllers/newsletterController.js';
+import express from 'express';
+import {
+  subscribeNewsletter,
+  listNewsletterEmails,
+} from '../controllers/newsletterController.js';
 
-const router = Router();
+const router = express.Router();
 
-// antes: router.post('/newsletter', subscribeNewsletter);
+// Suscribirse
 router.post('/', subscribeNewsletter);
+
+// Listar correos (opcional)
+router.get('/', listNewsletterEmails);
 
 export default router;
