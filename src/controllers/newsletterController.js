@@ -23,7 +23,7 @@ export const subscribeNewsletter = async (req, res) => {
       id: result.insertId,
     });
   } catch (error) {
-    console.error(' Error al suscribir correo:', error);
+    console.error('❌ Error al suscribir correo:', error);
 
     res.status(500).json({
       message: 'Error interno del servidor',
@@ -37,7 +37,7 @@ export const listNewsletterEmails = async (req, res) => {
     const emails = await getAllNewsletterEmails();
     res.status(200).json(emails);
   } catch (error) {
-    console.error(' Error al obtener correos:', error);
+    console.error('❌ Error al obtener correos:', error);
 
     res.status(500).json({
       message: 'Error interno del servidor',
